@@ -1,13 +1,23 @@
+aid: acid
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/acid/refs/heads/main/apis.yml
 name: ACID
-description: ACID (Atomicity, Consistency, Isolation, Durability) is a set of properties
-  that guarantee database transactions are processed reliably even in the face of
-  errors, power failures, or system crashes. These four properties ensure that data
-  remains accurate and consistent, making ACID compliance a fundamental requirement
-  for relational databases and financial systems.
-url: null
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-- ACID
-created: '2025'
-modified: '2025'
+  - ACID
+  - Database
+  - Transactions
+description: >-
+  ACID (Atomicity, Consistency, Isolation, Durability) is a set of properties
+  that guarantee database transactions are processed reliably even in the face of
+  errors, power failures, or system crashes. These four properties ensure that
+  data remains accurate and consistent, making ACID compliance a fundamental
+  requirement for relational databases and financial systems.
+created: '2025-01-01'
+modified: '2026-03-16'
+specificationVersion: '0.19'
 apis: []
-common: []
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
