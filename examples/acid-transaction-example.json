@@ -1,0 +1,16 @@
+{
+  "transactionId": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "status": "Aborted",
+  "isolationLevel": "Read Uncommitted",
+  "startTime": "2026-04-19T10:00:00.000Z",
+  "endTime": "2026-04-19T10:00:00.150Z",
+  "durationMs": 150,
+  "operations": [
+    "example-value"
+  ],
+  "rollbackReason": "Serialization failure: concurrent transaction updated the same row",
+  "savepoints": [
+    "sp1",
+    "before_payment"
+  ]
+}

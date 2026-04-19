@@ -1,0 +1,203 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: ACID
+  description: >-
+    Vocabulary taxonomy for ACID (Atomicity, Consistency, Isolation, Durability)
+    database transaction properties. Covers the landscape of ACID-compliant databases,
+    distributed transaction patterns, and API design for transactional systems.
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+operational:
+  apis:
+    - name: PostgreSQL Transaction API
+      namespace: postgresql
+      version: "16"
+      baseUrl: https://www.postgresql.org/
+      status: active
+    - name: CockroachDB Distributed SQL API
+      namespace: cockroachdb
+      version: "23.2"
+      baseUrl: https://cockroachlabs.cloud/
+      status: active
+    - name: Google Spanner API
+      namespace: spanner
+      version: "v1"
+      baseUrl: https://spanner.googleapis.com/
+      status: active
+    - name: Amazon Aurora Transactions API
+      namespace: aurora
+      version: "current"
+      baseUrl: https://rds.amazonaws.com/
+      status: active
+    - name: Atomikos Transaction API
+      namespace: atomikos
+      version: "current"
+      baseUrl: https://www.atomikos.com/
+      status: active
+
+  resources:
+    - name: Transaction
+      description: A unit of work that is atomic, consistent, isolated, and durable
+      apis: [postgresql, cockroachdb, spanner, aurora]
+      actions: [begin, commit, rollback, savepoint]
+    - name: Savepoint
+      description: A named point within a transaction to which partial rollback is possible
+      apis: [postgresql, cockroachdb]
+      actions: [create, rollback-to, release]
+    - name: Isolation Level
+      description: A configuration controlling the degree of isolation between concurrent transactions
+      apis: [postgresql, cockroachdb, spanner, aurora]
+      actions: [set, get]
+    - name: Saga Step
+      description: A local transaction in a distributed Saga pattern with a compensating action
+      apis: [atomikos]
+      actions: [execute, compensate, retry]
+    - name: Distributed Transaction
+      description: A transaction spanning multiple databases, services, or nodes
+      apis: [cockroachdb, spanner, atomikos]
+      actions: [coordinate, commit, rollback]
+    - name: Write-Ahead Log
+      description: A durability mechanism recording changes before they are applied to the database
+      apis: [postgresql, aurora]
+      actions: [write, replay, checkpoint]
+
+  actions:
+    - verb: begin
+      description: Start a new transaction
+      pattern: write
+    - verb: commit
+      description: Permanently apply all changes in the transaction
+      pattern: write
+    - verb: rollback
+      description: Undo all changes in the transaction
+      pattern: write
+    - verb: savepoint
+      description: Mark a point within a transaction for partial rollback
+      pattern: write
+    - verb: execute
+      description: Run a SQL operation within a transaction
+      pattern: write
+    - verb: compensate
+      description: Execute a compensating action to undo a saga step
+      pattern: write
+    - verb: coordinate
+      description: Manage a distributed transaction across multiple participants
+      pattern: write
+
+  schemas:
+    core:
+      - AcidTransaction
+      - AcidSagaStep
+    distributed:
+      - DatabaseOperation
+
+  parameters:
+    identifiers:
+      - name: transactionId
+        description: Unique identifier for a transaction (UUID)
+      - name: sagaId
+        description: Identifier for a distributed saga workflow
+      - name: stepId
+        description: Identifier for a saga step
+    filters:
+      - name: status
+        description: Filter transactions by status (Active, Committed, Rolled Back)
+      - name: isolationLevel
+        description: Filter by SQL isolation level
+
+  enums:
+    transactionStatus:
+      - Active
+      - Committed
+      - Rolled Back
+      - Aborted
+      - Pending
+    isolationLevels:
+      - Read Uncommitted
+      - Read Committed
+      - Repeatable Read
+      - Serializable
+    sagaStepStatus:
+      - Pending
+      - Executing
+      - Completed
+      - Compensating
+      - Compensated
+      - Failed
+    sqlOperationTypes:
+      - SELECT
+      - INSERT
+      - UPDATE
+      - DELETE
+      - SAVEPOINT
+      - ROLLBACK TO SAVEPOINT
+
+  authentication:
+    schemes:
+      - type: Database Connection
+        description: Standard database connection authentication (username/password, SSL certs, IAM)
+    notes: Authentication varies by database platform. REST APIs like Cloud Spanner use OAuth 2.0 bearer tokens.
+
+capability:
+  workflows:
+    - name: ACID Transaction Management
+      description: Managing atomic, consistent, isolated, and durable transactions in relational and distributed databases
+      apis: [PostgreSQL, CockroachDB, Google Spanner, Amazon Aurora]
+      personas: [Application Developer, Database Administrator, Data Engineer]
+    - name: Distributed Saga Orchestration
+      description: Coordinating distributed transactions across microservices using the Saga pattern with compensating transactions
+      apis: [Atomikos]
+      personas: [Backend Engineer, Architect, SRE]
+
+  personas:
+    - id: app-developer
+      name: Application Developer
+      description: Developer writing application code that uses database transactions
+      workflows: [ACID Transaction Management]
+    - id: dba
+      name: Database Administrator
+      description: DBA configuring isolation levels, monitoring transactions, and managing lock contention
+      workflows: [ACID Transaction Management]
+    - id: data-engineer
+      name: Data Engineer
+      description: Engineer building data pipelines requiring transactional guarantees
+      workflows: [ACID Transaction Management]
+    - id: backend-engineer
+      name: Backend Engineer
+      description: Engineer designing microservices with distributed transaction coordination
+      workflows: [Distributed Saga Orchestration]
+    - id: architect
+      name: Architect
+      description: System architect selecting ACID-compliant databases and transaction patterns for distributed systems
+      workflows: [ACID Transaction Management, Distributed Saga Orchestration]
+
+  domains:
+    - name: Relational Database Transactions
+      description: ACID transactions in traditional RDBMS systems
+      apis: [PostgreSQL, MySQL, Amazon Aurora]
+    - name: Distributed Database Transactions
+      description: ACID guarantees across multiple nodes and regions
+      apis: [CockroachDB, Google Spanner]
+    - name: Microservice Transaction Patterns
+      description: Saga, TCC, and 2PC patterns for distributed service coordination
+      apis: [Atomikos]
+
+crossReference:
+  - resource: Transaction
+    operations: [begin, commit, rollback]
+    workflows: [ACID Transaction Management]
+    personas: [Application Developer, Database Administrator]
+  - resource: Saga Step
+    operations: [execute, compensate, retry]
+    workflows: [Distributed Saga Orchestration]
+    personas: [Backend Engineer, Architect]
+  - resource: Distributed Transaction
+    operations: [coordinate, commit, rollback]
+    workflows: [ACID Transaction Management, Distributed Saga Orchestration]
+    personas: [Data Engineer, Architect]
+  - resource: Isolation Level
+    operations: [set, get]
+    workflows: [ACID Transaction Management]
+    personas: [Database Administrator, Application Developer]

@@ -1,0 +1,101 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "acid": "https://acid.example.org/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "AcidSagaStep": "acid:AcidSagaStep",
+    "AcidTransaction": "acid:AcidTransaction",
+    "compensationEndpoint": {
+      "@id": "acid:compensationEndpoint",
+      "@type": "@id"
+    },
+    "durationMs": {
+      "@id": "acid:durationMs",
+      "@type": "xsd:integer"
+    },
+    "endTime": {
+      "@id": "acid:endTime",
+      "@type": "xsd:dateTime"
+    },
+    "errorMessage": {
+      "@id": "acid:errorMessage",
+      "@type": "xsd:string"
+    },
+    "executionTimeMs": {
+      "@id": "acid:executionTimeMs",
+      "@type": "xsd:decimal"
+    },
+    "isolationLevel": {
+      "@id": "acid:isolationLevel",
+      "@type": "xsd:string"
+    },
+    "operationId": {
+      "@id": "acid:operationId",
+      "@type": "xsd:integer"
+    },
+    "operations": {
+      "@id": "acid:operations",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "retryCount": {
+      "@id": "acid:retryCount",
+      "@type": "xsd:integer"
+    },
+    "rollbackReason": {
+      "@id": "acid:rollbackReason",
+      "@type": "xsd:string"
+    },
+    "rowsAffected": {
+      "@id": "acid:rowsAffected",
+      "@type": "xsd:integer"
+    },
+    "sagaId": {
+      "@id": "acid:sagaId",
+      "@type": "xsd:string"
+    },
+    "savepoints": {
+      "@id": "acid:savepoints",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "sequence": {
+      "@id": "acid:sequence",
+      "@type": "xsd:integer"
+    },
+    "serviceEndpoint": {
+      "@id": "acid:serviceEndpoint",
+      "@type": "@id"
+    },
+    "startTime": {
+      "@id": "acid:startTime",
+      "@type": "xsd:dateTime"
+    },
+    "status": {
+      "@id": "acid:status",
+      "@type": "xsd:string"
+    },
+    "stepId": {
+      "@id": "acid:stepId",
+      "@type": "xsd:string"
+    },
+    "stepName": {
+      "@id": "acid:stepName",
+      "@type": "xsd:string"
+    },
+    "table": {
+      "@id": "acid:table",
+      "@type": "xsd:string"
+    },
+    "transactionId": {
+      "@id": "acid:transactionId",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "acid:type",
+      "@type": "xsd:string"
+    }
+  }
+}

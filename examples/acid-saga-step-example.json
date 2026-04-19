@@ -1,0 +1,13 @@
+{
+  "stepId": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "sagaId": "b2c3d4e5-f6a7-8901-bcde-fa2345678901",
+  "stepName": "Debit Customer Account",
+  "sequence": 1,
+  "status": "Compensating",
+  "serviceEndpoint": "https://payments.example.com/api/debit",
+  "compensationEndpoint": "https://payments.example.com/api/refund",
+  "startTime": "2026-04-19T10:00:00.000Z",
+  "endTime": "2026-04-19T10:00:00.200Z",
+  "retryCount": 0,
+  "errorMessage": "Insufficient funds in account"
+}

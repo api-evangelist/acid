@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/acid/refs/heads/main/json-structure/acid-saga-step-structure.json",
+  "name": "AcidSagaStep",
+  "description": "A step in a distributed Saga pattern transaction, representing a local transaction with a compensating action for rollback.",
+  "type": "object",
+  "properties": {
+    "stepId": {
+      "type": "uuid",
+      "description": "Unique identifier for this saga step",
+      "example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+    },
+    "sagaId": {
+      "type": "uuid",
+      "description": "Identifier of the parent saga workflow",
+      "example": "b2c3d4e5-f6a7-8901-bcde-fa2345678901"
+    },
+    "stepName": {
+      "type": "string",
+      "description": "Human-readable name for this saga step",
+      "example": "Debit Customer Account"
+    },
+    "sequence": {
+      "type": "int32",
+      "description": "Execution order within the saga (1-based)",
+      "example": 1
+    },
+    "status": {
+      "type": "string",
+      "description": "Current status of this saga step",
+      "enum": [
+        "Pending",
+        "Executing",
+        "Completed",
+        "Compensating",
+        "Compensated",
+        "Failed"
+      ],
+      "example": "Completed"
+    },
+    "serviceEndpoint": {
+      "type": "uri",
+      "description": "URL of the service responsible for this step",
+      "example": "https://payments.example.com/api/debit"
+    },
+    "compensationEndpoint": {
+      "type": "uri",
+      "description": "URL to call to undo this step if a later step fails",
+      "example": "https://payments.example.com/api/refund"
+    },
+    "startTime": {
+      "type": "datetime",
+      "description": "When this step began executing",
+      "example": "2026-04-19T10:00:00.000Z"
+    },
+    "endTime": {
+      "type": "datetime",
+      "description": "When this step completed or was compensated",
+      "example": "2026-04-19T10:00:00.200Z"
+    },
+    "retryCount": {
+      "type": "int32",
+      "description": "Number of retry attempts for this step",
+      "example": 0
+    },
+    "errorMessage": {
+      "type": "string",
+      "description": "Error message if the step failed",
+      "example": "Insufficient funds in account"
+    }
+  },
+  "required": [
+    "stepId",
+    "sagaId",
+    "stepName",
+    "sequence",
+    "status"
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/acid/refs/heads/main/json-structure/acid-transaction-structure.json",
+  "name": "AcidTransaction",
+  "description": "Represents an ACID database transaction with its properties, status, and isolation level.",
+  "type": "object",
+  "properties": {
+    "transactionId": {
+      "type": "uuid",
+      "description": "Unique identifier for the transaction",
+      "example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+    },
+    "status": {
+      "type": "string",
+      "description": "Current status of the transaction",
+      "enum": [
+        "Active",
+        "Committed",
+        "Rolled Back",
+        "Aborted",
+        "Pending"
+      ],
+      "example": "Committed"
+    },
+    "isolationLevel": {
+      "type": "string",
+      "description": "SQL transaction isolation level",
+      "enum": [
+        "Read Uncommitted",
+        "Read Committed",
+        "Repeatable Read",
+        "Serializable"
+      ],
+      "example": "Serializable"
+    },
+    "startTime": {
+      "type": "datetime",
+      "description": "Timestamp when the transaction began",
+      "example": "2026-04-19T10:00:00.000Z"
+    },
+    "endTime": {
+      "type": "datetime",
+      "description": "Timestamp when the transaction was committed or rolled back",
+      "example": "2026-04-19T10:00:00.150Z"
+    },
+    "durationMs": {
+      "type": "int32",
+      "description": "Transaction duration in milliseconds",
+      "example": 150
+    },
+    "operations": {
+      "type": "array",
+      "description": "List of database operations within this transaction",
+      "items": {
+        "$ref": "#/$defs/DatabaseOperation"
+      }
+    },
+    "rollbackReason": {
+      "type": "string",
+      "description": "Reason for rollback if the transaction was not committed",
+      "example": "Serialization failure: concurrent transaction updated the same row"
+    },
+    "savepoints": {
+      "type": "array",
+      "description": "Named savepoints defined within this transaction",
+      "items": {
+        "type": "string"
+      },
+      "example": [
+        "sp1",
+        "before_payment"
+      ]
+    }
+  },
+  "required": [
+    "transactionId",
+    "status",
+    "isolationLevel",
+    "startTime"
+  ]
+}
