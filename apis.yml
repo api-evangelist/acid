@@ -223,7 +223,7 @@ common:
           The Saga pattern decomposes long-running transactions into a series of
           local transactions with compensating actions for distributed consistency
           without 2PC overhead.
-  - type: JSON-LD
+  - type: JSONLD
     url: >-
       https://raw.githubusercontent.com/api-evangelist/acid/refs/heads/main/json-ld/acid-context.jsonld
     title: ACID JSON-LD Context
