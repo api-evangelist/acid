@@ -134,6 +134,10 @@ apis:
         url: https://www.atomikos.com/Blog/ACIDTransactionsAcrossMicroservices
         title: ACID Transactions Across Microservices
 common:
+  - type: VulnerabilityDisclosure
+    url: security/acid-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/acid-domain-security.yml
   - type: Website
     url: https://en.wikipedia.org/wiki/ACID
     title: ACID Wikipedia Reference
