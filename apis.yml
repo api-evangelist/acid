@@ -147,6 +147,12 @@ apis:
         url: https://www.atomikos.com/Blog/ACIDTransactionsAcrossMicroservices
         title: ACID Transactions Across Microservices
 common:
+  - type: SecurityPolicy
+    url: https://github.com/postgres/postgres/blob/master/.github/SECURITY.md
+  - type: CodeOfConduct
+    url: https://github.com/postgres/postgres/blob/master/.github/CODE_OF_CONDUCT.md
+  - type: ContributionGuide
+    url: https://github.com/postgres/postgres/blob/master/.github/CONTRIBUTING.md
   - type: VulnerabilityDisclosure
     url: security/acid-vulnerability-disclosure.yml
   - type: DomainSecurity
