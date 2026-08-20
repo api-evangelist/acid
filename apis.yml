@@ -20,6 +20,15 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/acid.png
 tags:
   - ACID
   - Database
+  - Transaction
+  - Atomicity
+  - Consistency
+  - Isolation
+  - Durability
+  - Distributed Systems
+tags_raw:
+  - ACID
+  - Database
   - Transactions
   - Atomicity
   - Consistency
@@ -69,6 +78,12 @@ apis:
     humanURL: https://www.cockroachlabs.com/docs/stable/
     baseURL: https://cockroachlabs.cloud/
     tags:
+      - CockroachDB
+      - Distributed SQL
+      - ACID
+      - Serializable
+      - Cloud-Native
+    tags_raw:
       - CockroachDB
       - Distributed SQL
       - ACID
