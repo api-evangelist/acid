@@ -177,6 +177,12 @@ apis:
         url: https://www.atomikos.com/Blog/ACIDTransactionsAcrossMicroservices
         title: ACID Transactions Across Microservices
 common:
+  - type: Plans
+    url: plans/acid-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/acid-rate-limits.yml
+  - type: FinOps
+    url: finops/acid-finops.yml
   - type: SecurityPolicy
     url: https://github.com/postgres/postgres/blob/master/.github/SECURITY.md
   - type: CodeOfConduct
