@@ -1,4 +1,4 @@
-# acid
+# ACID
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,9 +64,27 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-## acid on APIs.io
+ACID (Atomicity, Consistency, Isolation, Durability) is a set of properties that guarantee database transactions are processed reliably even in the face of errors, power failures, or system crashes. These four properties ensure that data remains accurate and consistent, making ACID compliance a fundamental requirement for relational databases, distributed systems, and financial APIs.
 
-Everything profiled for acid is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/acid/](https://apis.io/providers/acid/)** — or go straight to one of the APIs or properties below.
+**Areas:** ACID · Database · Transaction · Atomicity · Consistency · Isolation · Durability · Distributed Systems
+
+## ACID on APIs.io
+
+Everything profiled for ACID is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/acid/](https://apis.io/providers/acid/)** — or go straight to one of the APIs or properties below.
+
+### APIs (5)
+
+- PostgreSQL Transaction API — PostgreSQL provides full ACID compliance through its transaction management system including BEGIN, COMMIT, ROLLBACK, SAVEPOINT, and isolation level…
+- CockroachDB Distributed SQL API — CockroachDB is a distributed SQL database providing serializable ACID transactions across multiple nodes and regions. It uses the Raft consensus algorithm…
+- Google Spanner API — Google Spanner is a globally distributed, externally consistent database providing ACID transactions at global scale using TrueTime clock synchronization…
+- Amazon Aurora Transactions API — Amazon Aurora provides ACID-compliant transactions for both MySQL-compatible and PostgreSQL-compatible editions. Aurora's distributed storage layer provides…
+- Atomikos Transaction API — Atomikos provides ACID transaction management middleware for distributed microservices, supporting XA transactions across REST services using the…
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://en.wikipedia.org/wiki/ACID)
 
 ## API Evangelist rating
 
@@ -76,7 +94,7 @@ Not yet rated. See [apis.io/providers/acid/](https://apis.io/providers/acid/).
 
 API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for acid: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for ACID: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
 ## Open an issue
 
